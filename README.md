@@ -1,8 +1,9 @@
 # MUS2_ObjectDetection
 # Category-level Object Detection
-## Michael Schebek, Elisabeth Gittenberger
+## Elisabeth Gittenberger, Michael Schebek
 
 ### Angabe
+
 Detektion von ungesehenen Objekten und Klassifizierung der zugehörigen Objektkategorie. Annotieren
 Sie Bilder des YCB-video Datensatzes ([https://rse-lab.cs.washington.edu/projects/posecnn/](https://rse-lab.cs.washington.edu/projects/posecnn/)) auf
 "category-level" und Trainieren Sie einen beliebigen Object Detector (z.B.: Yolo mini). Nehmen Sie
@@ -29,7 +30,8 @@ Projektbeschreibung angegeben Quelle funktionierte auch nach mehrfachen Versuche
 Datensatz aus einer alternativen Quelle bezogen. Hier wurde der Datensatz teilweise für das trainieren eines YOLO Objekt
 Detectors erweitert und für einfacheren Download optimiert. ([https://okabe.dev/ycb-video-dataset-download-mirror/](https://okabe.dev/ycb-video-dataset-download-mirror/))
 
-### Geänderte Files
+### Konfigurationen
+
 Der Datensatz wurde dabei verwednet, die Klassen wurden jedoch anders annotiert. So wurden die 21 vorhandenen Klassen auf 5 neue Klassen zusammengefasst.
 Diese geänderte Annotierung erfolgte wie folgt:
 
@@ -85,7 +87,7 @@ Es wurden folgende Änderungen der Einstellungen vorgenommen nach der Anleitung 
 	- In jedem der 3 convolutional Layers, vor jedem yolo Layer
 		- filters = 30 (Klassen + 5) * 3
 
-### Build Anweisungen (auf Linux)
+### Ausführungs Anleitung (auf Linux)
 
 1. Laden und extrahieren Sie den Datensatz von der oben angegebenen Quelle (SSD empfohlen)
 2. Clonen Sie darknet von github in den Ordner /yolo des Datensatzes ([https://github.com/pjreddie/darknet](https://github.com/pjreddie/darknet))
@@ -94,9 +96,9 @@ Es wurden folgende Änderungen der Einstellungen vorgenommen nach der Anleitung 
 	- Nvidia CUDNN Library vorhanden: CUDNN = 1
 	- OpenCV 4 vorhanden: OPENCV = 1
 4. Compilieren Sie mit den Befehl $make
-5. Laden Sie darknet53.conv.74, die pre-trained weights für YOLOv3 herunter und kopieren Sie es in /yolo ([https://pjreddie.com/media/files/darknet53.conv.74](https://pjreddie.com/media/files/darknet53.conv.74))
-6. Clonen Sie den / Ordner aus dem Team-github
-7. Kopieren Sie box.py und color.py in den /data Ordner des Datensatzes und die restlichen Files in den /yolo
+5. Laden Sie darknet53.conv.74, die pre-trained weights für YOLOv3 herunter und kopieren Sie es in den /yolo Ordner des Datensatzes ([https://pjreddie.com/media/files/darknet53.conv.74](https://pjreddie.com/media/files/darknet53.conv.74))
+6. Clonen Sie den /scripts und den /properties Ordner aus dem MUS2_ObjectDetecton Repository
+7. Kopieren Sie die Files aus dem /scripts Ordner in den /data Ordner des Datensatzes und die Files aus dem /properties Ordner in den /yolo
 Ordner des Datensatzes
 8. Führen Sie box.py und color.py im /data Ordner des Datensatzes aus, die Annotierungen werden auf die neuen Klassen geändert
 9. Erstellen Sie im /yolo Ordner des Datensatzes einen backup Ordner mit $mkdir backup, hier werden die mit dem 
@@ -105,7 +107,8 @@ Netzwerk trainierten weights abgespeichert
 11. Führen Sie test.sh im /yolo Ordner des Datensatzes aus um ein neues Bild zu klassifizieren, Sie werden aufgefordert
 den Pfad des Bildes anzugeben, das Ergebnis wird als .jpg in den /yolo Ordner des Datensatzes abgespeichert
 
-### Ergebnisse und Ausblick
+### Ergebnisse
+
 Im Ordner Results befinden sich allen klassifizierten Bilder sowie ein Video und das 
 .weights File des mit den oben angegeben Parametern trainierten Netzwerks.
 
