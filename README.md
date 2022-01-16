@@ -20,7 +20,7 @@ Tensorflow.
 - Nvidia CUDNN Library
 - OpenCV 4.4.5
 - Object Detector
-	- Als Object Detector wurde YOLOv3 (welches?) ausgewählt, da dieser im Vergleich zu anderen Object Detectoren sowohl 
+	- Als Object Detector wurde YOLOv3 ausgewählt, da dieser im Vergleich zu anderen Object Detectoren sowohl 
 schneller als auch genauer ist. ([https://pjreddie.com/darknet/yolo/](https://pjreddie.com/darknet/yolo/)) YOLOv3 wurde von Joseph Chet Redmon und Ali Farhadi entwickelt. YOLO Versionen sind in Neural Network Frameworks 
 wie Tensorflow und Darknet implementiert. Bei Darknet handelt es sich um ein Framework, dass von den Entwicklern
 von YOLO stammt. Es wurde sich daher entschieden Darknet als Framework für die Anwendung heranzuziehen.
