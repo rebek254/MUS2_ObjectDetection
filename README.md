@@ -95,7 +95,7 @@ Es wurden folgende Änderungen der Einstellungen vorgenommen nach der Anleitung 
 	- OpenCV 4 vorhanden: OPENCV = 1
 4. Compilieren Sie mit den Befehl $make
 5. Laden Sie darknet53.conv.74, die pre-trained weights für YOLOv3 herunter und kopieren Sie es in /yolo ([https://pjreddie.com/media/files/darknet53.conv.74](https://pjreddie.com/media/files/darknet53.conv.74))
-6. Clonen Sie den / Ordner aus Team-github
+6. Clonen Sie den / Ordner aus dem Team-github
 7. Kopieren Sie box.py und color.py in den /data Ordner des Datensatzes und die restlichen Files in den /yolo
 Ordner des Datensatzes
 8. Führen Sie box.py und color.py im /data Ordner des Datensatzes aus, die Annotierungen werden auf die neuen Klassen geändert
@@ -114,8 +114,20 @@ enthalten die mehrmals und in zufälliger Reihenfolge in Netzwerk gespeist werde
 Es wurden 10 000 Iterationen trainiert.
 
 Allgemein kann gesagt werden, dass die Klassifizierung gut für Bilder funktioniert die nicht im
-Datensatz enthalten sind. Allerdings werden Objekte bei manchen Bilder falsch klassifiziert oder 
-schlecht erkannt. Bei den Klassen can und box treten die meisten Fehler auf. Die Fehler sind wahrscheinlich 
+Datensatz enthalten sind die den ursprünglichen Bildern ähneln. Beispiele sind auf den folgenden Bildern zu sehen.
+
+![Bild Dose](results/predictions_bundesheer1.jpg)
+![Bild Banane](results/predictions_banane1.jpg)
+![Bild Schere](results/predictions_Schere2.jpg)
+![Bild Schuessel](results/predictions_schuessel.jpg)
+
+Allerdings werden Objekte bei manchen Bilder falsch klassifiziert oder 
+schlecht erkannt. Bei den Klasse box treten die meisten Fehler auf. Dies ist auf folgenden Bildern zu sehen.
+
+![A](results/predictions_Cornflakes2.jpg)
+![A](results/predictions_kiste1.jpg)
+
+Die Fehler sind wahrscheinlich 
 darauf zurückzuführen, dass nur 21 verschiedene Objekte verwendet wurden um das Netzwerk zu trainieren.
 Um bessere Ergebnisse zu erziehlen sollten mehr verscheidene Objekte pro Klasse verwendet werden.
 Der zu verwendende Datensatz wurde für eine Pose Estimation der verwendeten 21 Objekten erstellt und nicht 
