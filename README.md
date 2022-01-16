@@ -116,7 +116,8 @@ Es wurden 10 000 Iterationen trainiert.
 Allgemein kann gesagt werden, dass die Klassifizierung gut für Bilder funktioniert die nicht im
 Datensatz enthalten sind die den ursprünglichen Bildern ähneln. Beispiele sind auf den folgenden Bildern zu sehen.
 
-![Bild Dose](results/predictions_bundesheer1.jpg) ![Bild Banane](results/predictions_Banane1.jpg) ![Bild Schere](results/predictions_Schere2.jpg) ![Bild Schuessel](results/predictions_schuessel.jpg)
+![Bild Dose](results/predictions_bundesheer1.jpg | width = 100) 
+![Bild Banane](results/predictions_Banane1.jpg) ![Bild Schere](results/predictions_Schere2.jpg) ![Bild Schuessel](results/predictions_schuessel.jpg)
 
 Allerdings werden Objekte bei manchen Bilder falsch klassifiziert oder 
 schlecht erkannt. Bei den Klasse box treten die meisten Fehler auf. Dies ist auf folgenden Bildern zu sehen.
