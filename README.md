@@ -27,13 +27,13 @@ von YOLO stammt. Es wurde sich daher entschieden Darknet als Framework für die 
 - Datensatz
 	- Als Datensatz wurden Bilder des YCB-video Datensatzes herangezogen. Der Download des Datensatzes über die in der 
 Projektbeschreibung angegeben Quelle funktionierte auch nach mehrfachen Versuchen nicht. Aus diesem Grund wurde der 
-Datensatz aus einer alternativen Quelle bezogen. Hier wurde der Datensatz teilweise für das trainieren eines YOLO Objekt
+Datensatz aus einer alternativen Quelle bezogen. Hier wurde der Datensatz teilweise für das Trainieren eines YOLO Objekt
 Detectors erweitert und für einfacheren Download optimiert. ([https://okabe.dev/ycb-video-dataset-download-mirror/](https://okabe.dev/ycb-video-dataset-download-mirror/))
 
 ### Konfigurationen
 
-Der Datensatz wurde dabei verwendet, die Klassen wurden jedoch anders annotiert. So wurden die 21 vorhandenen Klassen auf 5 neue Klassen zusammengefasst.
-Diese geänderte Annotation erfolgte wie folgt:
+Der Datensatz wurde dabei vollständig verwendet, die Klassen wurden jedoch anders annotiert. So wurden die 21 vorhandenen Klassen auf 5 neue Klassen zusammengefasst.
+Diese geänderte Annotation gestaltet sich wie folgt:
 
 - Klasse 0 "can"
 	- "002_master_chef_can"
@@ -65,13 +65,13 @@ Diese geänderte Annotation erfolgte wie folgt:
 Zur Änderung der Annotation wurden die classes.txt, \*-box.txt und \*-color.txt Files bearbeitet. Im classes.txt im /yolo
 Ordner des Datensatzes wurden die ursprünglichen 21 Klassen mit den neuen 5 ersetzt, das File wurde in newclasses.txt umbenannt. 
 Dann wurde im *-box.txt File jedes Bildes die respektiven Klassennamen ersetzt. Hier sind die Klassen der im Bild befindlichen Objekte 
-und die zugehörigen Koordinaten der Bounding Box notiert. Dies erfolgte mit "box.py". Anschließend wurden im \*-color.txt File
+und die zugehörigen Koordinaten der Bounding Box notiert. Dies erfolgte mit dem Script "box.py". Anschließend wurden im \*-color.txt File
 jedes Bildes, wo die Farben der jeweiligen Objekte angegeben sind, die Nummer der Klassen auf die neuen Klassennummern geändert. 
-Dies erfolgte mit "color.py".
+Dies erfolgte mit dem Script "color.py".
 
-Zur Anpassung des Netzwerkes wurden die .cfg Files angepasst. Als Ausgangspunkt wurde das yolov3.cfg
-verwendet. Es wurden zwei .cfg Files erstellt, eines für das Trainieren yolov3-ycb-train.cfg und eines für das Testen yolov3-ycb-test.cfg.
-Es wurden folgende Änderungen der Einstellungen vorgenommen, nach der Anleitung von ([https://github.com/AlexeyAB/darknet](https://github.com/AlexeyAB/darknet)):
+Zur Anpassung des Netzwerkes wurden die .cfg Files verändert. Als Ausgangspunkt wurde das yolov3.cfg
+verwendet. Es wurden zwei .cfg Files erstellt, eines für das Trainieren (yolov3-ycb-train.cfg) und eines für das Testen (yolov3-ycb-test.cfg).
+Es wurden folgende Änderungen der Einstellungen, nach der Anleitung von ([https://github.com/AlexeyAB/darknet](https://github.com/AlexeyAB/darknet)) vorgenommen:
  
 - In yolov3-ycb-train.cfg: 
 	- batch = 64
@@ -103,7 +103,7 @@ Ordner des Datensatzes
 8. Führen Sie box.py und color.py im /data Ordner des Datensatzes aus, die Annotation werden auf die neuen Klassen geändert
 9. Erstellen Sie im /yolo Ordner des Datensatzes einen backup Ordner mit $mkdir backup, hier werden die mit dem 
 Netzwerk trainierten weights abgespeichert
-10. Führen Sie train.sh im /yolo Ordner des Datensatzes aus, um das Netzwerk zu trainieren. Alternativ wenn Sie schon ein bereits fertig trainiertes Netzwerk verwenden möchten, kopieren sie die Weights für dieses aus dem Ordner /results/weights in den Ordner /yolo/backup des Datensatzes und entpacken sie die Files  anschließend.
+10. Führen Sie train.sh im /yolo Ordner des Datensatzes aus, um das Netzwerk zu trainieren. Alternativ wenn Sie ein bereits fertig trainiertes Netzwerk verwenden möchten, kopieren sie die weights für dieses aus dem Ordner /results/weights in den Ordner /yolo/backup des Datensatzes und entpacken sie die Files anschließend.
 11. Führen Sie test.sh im /yolo Ordner des Datensatzes aus um, ein neues Bild zu klassifizieren. Sie werden aufgefordert
 den Pfad des Bildes anzugeben, das Ergebnis wird als predictions.jpg in den /yolo Ordner des Datensatzes abgespeichert
 
@@ -113,11 +113,11 @@ Im Ordner /results befinden sich alle klassifizierten Bilder sowie ein Video. Da
 .weights File des mit den oben angegeben Parametern befindet sich gepackt im Ordner /results/weights.
 
 Das Netzwerk wurde insgesamt mit 640 000 Bildern trainiert. Im Datensatz sind 133 827 Bilder 
-enthalten die mehrmals und in zufälliger Reihenfolge in Netzwerk gespeist werden (siehe train.txt und test.txt).
+enthalten die mehrmals und in zufälliger Reihenfolge in Netzwerk gespeist wurden (siehe train.txt und test.txt).
 Es wurden 10 000 Iterationen trainiert.
 
-Allgemein kann gesagt werden, dass die Klassifizierung gut für Bilder funktioniert die nicht im
-Datensatz enthalten sind, die den ursprünglichen Bildern ähneln. Beispiele sind auf den folgenden Bildern zu sehen.
+Allgemein kann gesagt werden, dass die Klassifizierung gut für Bilder funktioniert, welche nicht im
+Datensatz enthalten sind, wenn diese den Trainingsbildern ähneln. Beispiele für eine gute Klassifizierung sind auf den folgenden Bildern zu sehen.
 
 ![Bild Dose](results/predictions_bundesheer1.jpg)
 ![Bild Banane](results/predictions_Banane1.jpg)
