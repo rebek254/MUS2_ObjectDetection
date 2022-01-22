@@ -1,6 +1,6 @@
 # MUS2_ObjectDetection
 # Category-level Object Detection
-## Elisabeth Gittenberger, Michael Schebek
+## Elisabeth G., Michael S.
 
 ### Angabe
 
